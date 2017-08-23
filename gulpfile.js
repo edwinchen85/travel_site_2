@@ -4,14 +4,11 @@ var gulp = require('gulp'),
     autoprefixer = require('autoprefixer'),
     cssvars = require('postcss-simple-vars'),
     nested = require('postcss-nested'),
-    cssImport = require('postcss-import');
+    cssImport = require('postcss-import'),
+    browserSync = require('browser-sync').create();
 
 gulp.task('default', function() {
   console.log("Hooray - you created a gulp task.");
-});
-
-gulp.task('html', function() {
-  console.log("Imagine something useful being done to your HTML here.");
 });
 
 gulp.task('styles', function() {
@@ -22,12 +19,24 @@ gulp.task('styles', function() {
 
 gulp.task('watch', function() {
 
+  browserSync.init({
+    notify: false,
+    server: {
+      baseDir: "app"
+    }
+  });
+
   watch('./app/index.html', function() {
-    gulp.start('html');
+    browserSync.reload();
   });
 
   watch('./app/assets/styles/**/*.css', function() {
-    gulp.start('styles');
+    gulp.start('cssInject');
   })
 
+});
+
+gulp.task('cssInject', ['styles'], function() {
+  return gulp.src('./app/temp/styles/styles.css')
+    .pipe(browserSync.stream())
 });
