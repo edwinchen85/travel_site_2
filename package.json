@@ -1,0 +1,19 @@
+{
+  "name": "travel_site_2",
+  "version": "1.0.0",
+  "description": "A travel site built on modern web development tools",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edwinchen85/travel_site_2.git"
+  },
+  "author": "Edwin Chen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/edwinchen85/travel_site_2/issues"
+  },
+  "homepage": "https://github.com/edwinchen85/travel_site_2#readme"
+}
